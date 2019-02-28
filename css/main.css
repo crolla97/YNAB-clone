@@ -178,6 +178,19 @@ button:focus {
 
 .budget-table-container .budget-table .master-category .budget-table-name {
   font-size: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
 }
 
 .budget-table-container .budget-table .sub-category {
@@ -294,6 +307,33 @@ button {
   color: transparent;
   height: .1em;
   width: 80%;
+}
+
+.add-category {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0;
+  margin-left: 5px;
+}
+
+.add-category img {
+  height: 14px;
+}
+
+.add-category span {
+  color: #099CC2;
+}
+
+.inside-add {
+  display: none;
+}
+
+.master-category:hover .inside-add {
+  display: block;
 }
 
 .overlay {
@@ -626,22 +666,8 @@ button {
   align-items: center;
 }
 
-.content .budget-toolbar-add-category {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.content .budget-toolbar-add-category img {
-  height: 14px;
-  padding-right: 2px;
-}
-
-.content .budget-toolbar-add-category span {
-  color: #099CC2;
+.content .budget-toolbar button span {
+  padding-left: 2px;
 }
 
 .content .budget-toolbar .undo-redo-container {

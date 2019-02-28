@@ -68,6 +68,30 @@ button {
     }
 }
 
+// Add Category 
+.add-category {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin-left: 5px;
+
+
+    img {
+        height: 14px;
+    }
+
+    span {
+        color: $button;
+    }
+}
+
+.inside-add {
+    display: none;
+}
+
+.master-category:hover .inside-add {
+    display: block;
+}
 
 // Dropdown Menu
 .overlay {

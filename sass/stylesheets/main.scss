@@ -222,18 +222,8 @@
         display: flex;
         align-items: center;
 
-        &-add-category {
-            display: flex;
-            align-items: center;
-
-            img {
-                height: 14px;
-                padding-right: 2px;
-            }
-
-            span {
-                color: $button;
-            }
+        button span {
+            padding-left: 2px;
         }
 
         .undo-redo-container {

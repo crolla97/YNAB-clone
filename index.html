@@ -98,7 +98,7 @@
                 </div>
             </div>
             <div class="budget-toolbar">
-                <button class="budget-toolbar-add-category">
+                <button class="add-category">
                     <img src="/images/plus-sign-in-a-circle.svg" alt="add category">
                     <span>Category Group</span>
                 </button>
@@ -134,10 +134,15 @@
                 <div class="budget-table">
                     <ul class="budget-table-row master-category">
                         <li class="budget-table-checkbox">
-
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" id="category-checkbox">
+                            </div>
                         </li>
                         <li class="budget-table-name">
                             Immediate Obligations
+                            <button class="add-category inside-add">
+                                <img src="/images/plus-sign-in-a-circle.svg" alt="add category">
+                            </button>
                         </li>
                         <li class="budget-table-budgeted">
                             £0.00
@@ -151,7 +156,9 @@
                     </ul>
                     <ul class="budget-table-row sub-category">
                         <li class="budget-table-checkbox">
-
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" id="category-checkbox">
+                            </div>
                         </li>
                         <li class="budget-table-name">
                             Car Insurance

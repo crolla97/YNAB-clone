@@ -11,7 +11,7 @@ let UIController = (function() {
 //* Global Controller
 let controller = (function(budgetCtrl, UICtrl) {
 
-    document.querySelector('.budget-toolbar-add-category').addEventListener('click', function() {
+    document.querySelector('.add-category').addEventListener('click', function() {
         
         // Toggle overlay display
         let overlay = document.getElementById('overlay');
