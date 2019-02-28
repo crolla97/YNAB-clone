@@ -1,0 +1,256 @@
+@import "reset";
+@import "base";
+@import "layout";
+@import "modules";
+
+.sidebar {
+    background-color: $teal;
+    height: 100%;
+    width: 260px;
+    display: inline-block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    overflow: auto;
+
+    &-budget {
+        text-align: left;
+        color: #fff;
+        padding: 13px 16px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+
+        &-name {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        &-email {
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        .arrow-down {
+            margin-left: 60px;
+
+            img {
+                height: 14px;
+            }
+        }
+    }
+
+
+    &-nav {
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid $darkblue;
+
+        &-link {
+            display: flex;
+            align-items: center;
+            height: 45px;
+            font-size: 18px;
+            padding: 4px 0 4px 30px;
+            cursor: pointer;
+        }
+
+        &-link:hover {
+            background-color: $darkblue;
+        }
+    }
+
+    .nav-account {
+        border-bottom: 1px solid $darkblue;
+        color: #FFF;
+
+        &-block {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            height: 45px;
+            padding: 0 10px;
+
+            &-name {
+                font-size: 12px;
+                font-weight: 200;
+                color: #FFF;
+            }
+
+            .budget-amount {
+                font-size: 12px;
+            }
+
+            img {
+                height: 9px;
+                padding-right: 5px;
+            }
+        }
+    }
+}
+
+.content {
+    position: absolute;
+    left: 260px;
+    bottom: 0;
+    padding: 0;
+    background-color: #FFF;
+    right: 0;
+    top: 0;
+    display: inline-block;
+
+    .budget-header {
+        left: 260px;
+        background-color: $prussian;
+        position: fixed;
+        width: 100%;
+        min-width: 838px;
+        height: 91px;
+        z-index: 11;
+        display: flex;
+
+        &-calander {
+            height: 90px;
+            min-width: 250px;
+            width: 24%;
+            border-right: 1px solid grey;
+            z-index: 20;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+
+            &-back {
+                height: 35px;
+            }
+
+            &-container {
+                padding: 0 15px;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+
+                .calander-date {
+                    color: white;
+                    font-size: 20px;
+                    font-weight: 700;
+                }
+
+                .calander-note {
+                    color: $teal;
+                    font-size: 14px;
+                    font-weight: 300;
+                    font-style: italic;
+                    padding-top: 2px;
+                }
+            }
+
+            &-forward {
+                height: 35px;
+            }
+        }
+
+        &-totals {
+            min-width: 540px;
+            width: 40%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+
+            &-amount {
+                background-color: $green;
+                text-align: center;
+                border-radius: 10px;
+
+                &-value {
+                    font-size: 28px;
+                    font-weight: 300;
+                    color: white;
+                    padding: 15px 10px 5px 10px;
+                    letter-spacing: 2px;
+                }
+
+                &-label {
+                    font-weight: 400;
+                    font-style: italic;
+                    padding-bottom: 5px;
+                    font-size: 13px;
+                }
+            }
+
+            &-details {
+                display: flex;
+                flex-direction: row;
+                color: white;
+                margin: 10px 15px;
+                font-size: 12px;
+
+                &-values {
+                    font-weight: 700;
+                    text-align: right;
+
+                    li {
+                        padding: 1px 0;
+                    }
+                }
+
+                &-names {
+                    font-style: italic;
+                    padding-left: 5px;
+                    font-weight: 400;
+
+                    li {
+                        padding: 1px 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .budget-toolbar {
+        position: fixed;
+        background-color: #FFF;
+        border-bottom: 1px solid #dfe4e9;
+        border-top: 1px solid #042229;
+        font-size: 14px;
+        top: 91px;
+        height: 35px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+
+        &-add-category {
+            display: flex;
+            align-items: center;
+
+            img {
+                height: 14px;
+                padding-right: 2px;
+            }
+
+            span {
+                color: $button;
+            }
+        }
+
+        .undo-redo-container {
+            display: flex;
+            align-items: center;
+
+            .undo-button {
+                .undo {
+                    color: $button;
+                }
+            }
+
+            .redo-button {
+                .redo {
+                    color: $button;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,121 @@
+button {
+    background-color: transparent;
+    border-radius: 0;
+    border: none;
+    cursor: pointer;
+}
+
+
+.budget-table-checkbox {
+    width: 1.9rem;
+}
+
+.budget-table-name {
+    width: 39%;
+    padding-left: 8px;
+}
+
+.budget-table-budgeted {
+    width: 15%;
+    padding-left: 8px;
+    text-align: right;
+}
+
+.budget-table-activity {
+    width: 20%;
+    padding-left: 8px;
+    text-align: right;
+
+}
+
+.budget-table-available {
+    width: 20%;
+    padding-left: 8px;
+    text-align: right;
+}
+
+.budget-inspector-cell {
+    h3 {
+        background-color: transparent;
+        font-size: .875em;
+        border-radius: 0;
+        margin-bottom: .5em;
+        font-weight: 900;
+        letter-spacing: .05rem;
+        border-radius: 1000px;
+        left: -2%;
+        margin-top: 1.4em;
+        padding: .3em .5em;
+        position: relative;
+        text-transform: uppercase;
+        width: 104%;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 2em;
+        margin: 0 0 .75em;
+        text-align: center;
+    }
+
+    hr {
+        background-color: transparent;
+        border: 0;
+        border-bottom: 1px solid rgba(0, 0, 0, .15);
+        color: transparent;
+        height: .1em;
+        width: 80%;
+    }
+}
+
+
+// Dropdown Menu
+.overlay {
+    position: fixed;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
+.model-add-master-category {
+    background-color: transparent;
+}
+
+.model {
+    left: 210.979px;
+    top: 135.219px;
+    height: auto;
+    width: 14em;
+    background-color: #fff;
+    box-shadow: 0 0 4em 0 rgba(0,0,0,.25);
+    pointer-events: auto;
+    border-radius: .4em;
+    position: relative;
+    z-index: 9998;
+    &-content {
+        padding: .765em .765em 0;
+        .fieldset {
+            border: 1px solid transparent;
+            border-bottom-color: #eef1f5;
+            margin: 0;
+            padding: 0;
+            input {
+                border: 2px solid #88979d;
+                font-size: 1em;
+                margin-bottom: .5em;
+                padding: .5em;
+                width: 100%;
+                border-radius: .3em;
+                margin: 0;
+                vertical-align: baseline;
+            }
+        }
+    }
+
+    &-actions {
+        padding: .765em;
+    }
+}

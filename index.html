@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <button class="sidebar-budget">
+                <div class="sidebar-budget-settings">
+                    <div class="sidebar-budget-name">
+                        My Budget
+                    </div>
+                    <div class="sidebar-budget-email">
+                        cristianocrolla@gmail.com
+                    </div>
+                </div>
+                <i class="arrow-down">
+                    <img src="/images/sort-down.svg" alt="arrow down">
+                </i>
+            </button>
+            <ul class="sidebar-nav">
+                <li class="sidebar-nav-link">
+                    <a href="#">
+                        <div>Budget</div>
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="#">
+                        <div>Reports</div>
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="#">
+                        <div>All Accounts</div>
+                    </a>
+                </li>
+            </ul>
+            <div class="nav-account">
+                <div class="nav-account-block">
+                    <button class="nav-account-block-name">
+                        <i>
+                            <img src="/images/right-chevron.svg" alt="right chevron">
+                        </i>
+                        BUDGET
+                    </button>
+                    <div class="budget-amount">£8,995.00</div>
+                </div>
+            </div>
+        </nav>
+        <div class="content">
+            <div class="budget-header">
+                <div class="budget-header-calander">
+                    <a href="#">
+                        <img src="/images/left-arrow.svg" alt="back button" class="budget-header-calander-back">
+                    </a>
+                    <div class="budget-header-calander-container">
+                        <button class="calander-date">FEB 2019</button>
+                        <button class="calander-note">Enter a note</button>
+                    </div>
+                    <a href="#">
+                        <img src="/images/right-arrow.svg" alt="forward arrow" class="budget-header-calander-forward">
+                    </a>
+                </div>
+                <div class="budget-header-totals">
+                    <div class="budget-header-totals-amount">
+                        <div class="budget-header-totals-amount-value">
+                            £1,044.52
+                        </div>
+                        <div class="budget-header-totals-amount-label">
+                            To be Budgeted
+                        </div>
+                    </div>
+                    <div class="budget-header-totals-details">
+                        <div class="budget-header-totals-details-values">
+                            <ul>
+                                <li>+£1,383.75</li>
+                                <li>-£0.00</li>
+                                <li>−£339.23</li>
+                                <li>-£0.00</li>
+                            </ul>
+                        </div>
+                        <div class="budget-header-totals-details-names">
+                            <ul>
+                                <li>Funds for Feb</li>
+                                <li>Overspent in Jan</li>
+                                <li>Budgeted in Feb</li>
+                                <li>Budgeted in Future</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="budget-toolbar">
+                <button class="budget-toolbar-add-category">
+                    <img src="/images/plus-sign-in-a-circle.svg" alt="add category">
+                    <span>Category Group</span>
+                </button>
+                <div class="undo-redo-container">
+                    <button class="undo-button">
+                        <img src="/images/undo.svg" alt="undo">
+                        <span class="undo">Undo</span>
+                    </button>
+                    <button class="redo-button">
+                        <img src="/images/redo.svg" alt="redo">
+                        <span class="redo">Redo</span>
+                    </button>
+                </div>
+            </div>
+            <section class="budget-table-container">
+                <ul class="budget-table-header">
+                    <li class="budget-table-checkbox">
+
+                    </li>
+                    <li class="budget-table-name">
+                        CATEGORY
+                    </li>
+                    <li class="budget-table-budgeted">
+                        BUDGETED
+                    </li>
+                    <li class="budget-table-activity">
+                        ACTIVITY
+                    </li>
+                    <li class="budget-table-available">
+                        AVAILABLE
+                    </li>
+                </ul>
+                <div class="budget-table">
+                    <ul class="budget-table-row master-category">
+                        <li class="budget-table-checkbox">
+
+                        </li>
+                        <li class="budget-table-name">
+                            Immediate Obligations
+                        </li>
+                        <li class="budget-table-budgeted">
+                            £0.00
+                        </li>
+                        <li class="budget-table-activity">
+                            £0.00
+                        </li>
+                        <li class="budget-table-available">
+                            £0.00
+                        </li>
+                    </ul>
+                    <ul class="budget-table-row sub-category">
+                        <li class="budget-table-checkbox">
+
+                        </li>
+                        <li class="budget-table-name">
+                            Car Insurance
+                        </li>
+                        <li class="budget-table-budgeted">
+                            <div class="input-wrapper">
+                                <input type="text" placeholder="£0.00">
+                            </div>
+                        </li>
+                        <li class="budget-table-activity">
+                            <span>
+                                £0.00
+                            </span>
+                        </li>
+                        <li class="budget-table-available">
+                            <span>
+                                £0.00
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <aside class="budget-inspector">
+                <div class="budget-inspector-default">
+                    <div class="budget-inspector-cell">
+                        <h3>TOTAL BUDGETED</h3>
+                        <h1 class="user-data">
+                            <span class="user-data currency positive">
+                                <bdi>£</bdi>
+                                339.23
+                            </span>
+                        </h1>
+                        <hr>
+                    </div>
+                    <div class="budget-inspector-cell">
+                        <h3>TOTAL ACTIVITY</h3>
+                        <h1 class="user-data">
+                            <span class="user-data currency positive">
+                                <bdi>£</bdi>
+                                339.23
+                            </span>
+                        </h1>
+                        <hr>
+                    </div>
+                    <div class="budget-inspector-cell">
+                        <h3>TOTAL AVAILABLE</h3>
+                        <h1 class="user-data">
+                            <span class="user-data currency positive">
+                                <bdi>£</bdi>
+                                339.23
+                            </span>
+                        </h1>
+                        <hr>
+                    </div>
+                    <div class="budget-inspector-cell">
+                        <h3>TOTAL INFLOW</h3>
+                        <h1 class="user-data">
+                            <span class="user-data currency positive">
+                                <bdi>£</bdi>
+                                339.23
+                            </span>
+                        </h1>
+                        <hr>
+                    </div>
+                    <div class="budget-inspector-cell">
+                        <h3>QUICK BUDGET</h3>
+
+                    </div>
+                </div>
+            </aside>
+        </div>
+        <div class="overlay" id="overlay" style="display: none;">
+            <div class="model-popup model-add-master-category">
+                <div class="model">
+                    <div class="model-content">
+                        <div class="fieldset">
+                            <input type="text" id="master-name" placeholder="Add Category Name">
+                        </div>
+                    </div>
+                    <div class="model-actions">
+                        <button class="button button-cancel" id="cancel">
+                            Cancel
+                        </button>
+                        <button class="button button-primary" id="primary">
+                            Ok
+                        </button>
+                    </div>
+                    <div class="modal-arrow" style="position: absolute; width: 0px; height: 0px; bottom: 100%; left: 97px; border-width: 0px 15px 15px; border-top-style: initial; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-color: initial; border-right-color: transparent; border-bottom-color: rgb(255, 255, 255); border-left-color: transparent; border-image: initial;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+
+</body>
+
+</html>
