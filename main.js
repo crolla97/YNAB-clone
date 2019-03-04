@@ -6,17 +6,23 @@ let budgetController = (function () {
 //* UI Controller
 let UIController = (function () {
 
-})();
+    let DOMstrings = {
+        addCategory: '.add-category',
+        overlay: '.overlay',
+        popup: '.model',
+        popupInput: '.add-btn'
+    }
 
-//* Global Controller
-let controller = (function (budgetCtrl, UICtrl) {
-    // Toggle overlay display
-    let addCat;
+    return {
 
-    addCat = document.querySelectorAll('.add-category');
+        getCategoryInput: () => {
+            return {
+                name: document.querySelector(DOMstrings.addCategory)
+            }
+        },
 
-    addCat.forEach(function (button) {
-        button.addEventListener('click', function(event) {
+        showCategoryPopup: () => {
+
             let x, y, overlay, popup;
 
             x = event.clientX;
@@ -39,7 +45,51 @@ let controller = (function (budgetCtrl, UICtrl) {
                     overlay.style.display = 'none';
                 }
             };
-        })
-    });
+
+        },
+
+        getDOMstrings: function () {
+            return DOMstrings;
+        }
+    };
+
+})();
+
+//* Global Controller
+let controller = (function (budgetCtrl, UICtrl) {
+
+    let setupEventListeners = function () {
+        let DOM = UICtrl.getDOMstrings();
+
+        // Toggle overlay display
+        let showPop;
+
+        showPop = document.querySelectorAll('.add-category');
+
+        showPop.forEach(function (button) {
+            button.addEventListener('click', ctrlAddCategory);
+        });
+
+
+    };
+
+    ctrlAddCategory = () => {
+
+        // UICtrl.showCategoryPopup();
+
+        UICtrl.showCategoryPopup();
+
+        // TODO 1. Get field input data
+
+        // TODO 2. Add the item to the UI
+    }
+
+    return {
+        init: function () {
+            setupEventListeners();
+        }
+    }
 
 })(budgetController, UIController);
+
+controller.init();
