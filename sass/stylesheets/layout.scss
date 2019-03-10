@@ -47,6 +47,7 @@
     }
 
     .budget-table {
+        width: 100%;
 
         &-row {
             box-sizing: border-box;
@@ -90,7 +91,7 @@
             margin-top: -1px;
             height: 2.3em;
 
-            li {
+            td {
                 font-weight: 400;
 
                 .input-wrapper {

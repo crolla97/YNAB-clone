@@ -98,7 +98,7 @@
                 </div>
             </div>
             <div class="budget-toolbar">
-                <button class="add-category">
+                <button class="add-category" id="master">
                     <img src="/images/plus-sign-in-a-circle.svg" alt="add category">
                     <span>Category Group</span>
                 </button>
@@ -131,55 +131,55 @@
                         AVAILABLE
                     </li>
                 </ul>
-                <div class="budget-table">
-                    <ul class="budget-table-row master-category">
-                        <li class="budget-table-checkbox">
+                <table class="budget-table">
+                    <tr class="budget-table-row master-category">
+                        <td class="budget-table-checkbox">
                             <div class="checkbox-wrapper">
                                 <input type="checkbox" id="category-checkbox">
                             </div>
-                        </li>
-                        <li class="budget-table-name">
+                        </td>
+                        <td class="budget-table-name">
                             Immediate Obligations
-                            <button class="add-category inside-add">
+                            <button class="add-category inside-add" id="row">
                                 <img src="/images/plus-sign-in-a-circle.svg" alt="add category">
                             </button>
-                        </li>
-                        <li class="budget-table-budgeted">
+                        </td>
+                        <td class="budget-table-budgeted">
                             £0.00
-                        </li>
-                        <li class="budget-table-activity">
+                        </td>
+                        <td class="budget-table-activity">
                             £0.00
-                        </li>
-                        <li class="budget-table-available">
+                        </td>
+                        <td class="budget-table-available">
                             £0.00
-                        </li>
-                    </ul>
-                    <ul class="budget-table-row sub-category">
-                        <li class="budget-table-checkbox">
+                        </td>
+                    </tr>
+                    <tr class="budget-table-row sub-category">
+                        <td class="budget-table-checkbox">
                             <div class="checkbox-wrapper">
                                 <input type="checkbox" id="category-checkbox">
                             </div>
-                        </li>
-                        <li class="budget-table-name">
+                        </td>
+                        <td class="budget-table-name">
                             Car Insurance
-                        </li>
-                        <li class="budget-table-budgeted">
+                        </td>
+                        <td class="budget-table-budgeted">
                             <div class="input-wrapper">
                                 <input type="text" placeholder="£0.00">
                             </div>
-                        </li>
-                        <li class="budget-table-activity">
+                        </td>
+                        <td class="budget-table-activity">
                             <span>
                                 £0.00
                             </span>
-                        </li>
-                        <li class="budget-table-available">
+                        </td>
+                        <td class="budget-table-available">
                             <span>
                                 £0.00
                             </span>
-                        </li>
-                    </ul>
-                </div>
+                        </td>
+                    </tr>
+                </table>
             </section>
             <aside class="budget-inspector">
                 <div class="budget-inspector-default">
@@ -235,7 +235,7 @@
                 <div class="model">
                     <div class="model-content">
                         <div class="fieldset">
-                            <input type="text" id="master-name" placeholder="Add Category Name">
+                            <input type="text" class="category-name" placeholder="Add Category Name">
                         </div>
                     </div>
                     <div class="model-actions">
