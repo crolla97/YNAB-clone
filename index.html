@@ -98,7 +98,7 @@
                 </div>
             </div>
             <div class="budget-toolbar">
-                <button class="add-category" id="master">
+                <button class="add-category-master" id="master">
                     <img src="/images/plus-sign-in-a-circle.svg" alt="add category">
                     <span>Category Group</span>
                 </button>
@@ -131,54 +131,56 @@
                         AVAILABLE
                     </li>
                 </ul>
-                <table class="budget-table">
-                    <tr class="budget-table-row master-category">
-                        <td class="budget-table-checkbox">
-                            <div class="checkbox-wrapper">
-                                <input type="checkbox" id="category-checkbox">
-                            </div>
-                        </td>
-                        <td class="budget-table-name">
-                            Immediate Obligations
-                            <button class="add-category inside-add" id="row">
-                                <img src="/images/plus-sign-in-a-circle.svg" alt="add category">
-                            </button>
-                        </td>
-                        <td class="budget-table-budgeted">
-                            £0.00
-                        </td>
-                        <td class="budget-table-activity">
-                            £0.00
-                        </td>
-                        <td class="budget-table-available">
-                            £0.00
-                        </td>
-                    </tr>
-                    <tr class="budget-table-row sub-category">
-                        <td class="budget-table-checkbox">
-                            <div class="checkbox-wrapper">
-                                <input type="checkbox" id="category-checkbox">
-                            </div>
-                        </td>
-                        <td class="budget-table-name">
-                            Car Insurance
-                        </td>
-                        <td class="budget-table-budgeted">
-                            <div class="input-wrapper">
-                                <input type="text" placeholder="£0.00">
-                            </div>
-                        </td>
-                        <td class="budget-table-activity">
-                            <span>
+                <table class="budget-table" id="budget-table">
+                    <tbody id="tbody">
+                        <tr class="budget-table-row master-category">
+                            <td class="budget-table-checkbox">
+                                <div class="checkbox-wrapper">
+                                    <input type="checkbox" id="category-checkbox">
+                                </div>
+                            </td>
+                            <td class="budget-table-name">
+                                Immediate Obligations
+                                <button class="add-category inside-add" id="row">
+                                    <img src="/images/plus-sign-in-a-circle.svg" alt="add category">
+                                </button>
+                            </td>
+                            <td class="budget-table-budgeted">
                                 £0.00
-                            </span>
-                        </td>
-                        <td class="budget-table-available">
-                            <span>
+                            </td>
+                            <td class="budget-table-activity">
                                 £0.00
-                            </span>
-                        </td>
-                    </tr>
+                            </td>
+                            <td class="budget-table-available">
+                                £0.00
+                            </td>
+                        </tr>
+                        <tr class="budget-table-row sub-category">
+                            <td class="budget-table-checkbox">
+                                <div class="checkbox-wrapper">
+                                    <input type="checkbox" id="category-checkbox">
+                                </div>
+                            </td>
+                            <td class="budget-table-name">
+                                Car Insurance
+                            </td>
+                            <td class="budget-table-budgeted">
+                                <div class="input-wrapper">
+                                    <input type="text" placeholder="£0.00">
+                                </div>
+                            </td>
+                            <td class="budget-table-activity">
+                                <span>
+                                    £0.00
+                                </span>
+                            </td>
+                            <td class="budget-table-available">
+                                <span>
+                                    £0.00
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
             </section>
             <aside class="budget-inspector">

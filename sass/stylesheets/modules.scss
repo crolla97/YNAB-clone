@@ -85,6 +85,22 @@ button {
     }
 }
 
+.add-category-master {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin-left: 5px;
+
+
+    img {
+        height: 14px;
+    }
+
+    span {
+        color: $button;
+    }
+}
+
 .inside-add {
     display: none;
 }
@@ -112,18 +128,21 @@ button {
     height: auto;
     width: 14em;
     background-color: #fff;
-    box-shadow: 0 0 4em 0 rgba(0,0,0,.25);
+    box-shadow: 0 0 4em 0 rgba(0, 0, 0, .25);
     pointer-events: auto;
     border-radius: .4em;
     position: relative;
     z-index: 9998;
+
     &-content {
         padding: .765em .765em 0;
+
         .fieldset {
             border: 1px solid transparent;
             border-bottom-color: #eef1f5;
             margin: 0;
             padding: 0;
+
             input {
                 border: 2px solid #88979d;
                 font-size: 1em;

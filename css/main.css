@@ -332,6 +332,25 @@ button {
   color: #099CC2;
 }
 
+.add-category-master {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0;
+  margin-left: 5px;
+}
+
+.add-category-master img {
+  height: 14px;
+}
+
+.add-category-master span {
+  color: #099CC2;
+}
+
 .inside-add {
   display: none;
 }
