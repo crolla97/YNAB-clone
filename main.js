@@ -1,6 +1,53 @@
 //* Budget Controller
 let budgetController = (function () {
 
+    const masterConst = function(type, id) {
+        this.type = type;
+        this.id = id;
+    };
+
+    const subConst = function(type, id) {
+        this.type = type;
+        this.id = id;
+    };
+
+    let categoryData = {
+        catType: {
+            master: [],
+            sub: []
+        }
+    };
+
+    return {
+            addItem: function (type) {
+                let newItem, ID;
+    
+                // Create new ID
+                if (categoryData.catType[type].length > 0) {
+                    ID = categoryData.catType[type][categoryData.catType[type].length - 1].id + 1;                
+                } else {
+                    ID = 0;
+                }
+    
+                // Create new item based on'inc' or 'exp' type
+                if (type === 'master') {
+                    newItem = new masterConst(type, ID);                
+                } else if (type === 'sub') {
+                    newItem = new subConst(type, ID);
+                }
+    
+                // Push it into our data structure
+                categoryData.catType[type].push(newItem);
+    
+                // Return the new element
+                return newItem;
+            },
+
+            testing: () => {
+                console.log(categoryData);
+            }
+    }
+
 })();
 
 //* UI Controller
@@ -17,12 +64,6 @@ let UIController = (function () {
     }
 
     return {
-
-        getCategoryType: function () {
-
-
-
-        },
 
         getCategoryInput: () => {
             return {
@@ -96,16 +137,12 @@ let UIController = (function () {
                 table.rows[0].cells.item(1).insertAdjacentHTML('beforeend', plusHtml);
 
 
-
             } else if (type === 'sub') {
                 console.log('I am a sub')
+
             }
-            // TODO 2. create HTML string with placeholder text
 
 
-
-
-            // TODO 3. get category name
 
         },
 
@@ -131,6 +168,7 @@ let controller = (function (budgetCtrl, UICtrl) {
         // sub category add buttons
         subPop = document.querySelectorAll(DOM.addCategory);
         subPop.forEach(function (button) {
+            console.log(button.parentElement.parentElement);
             button.addEventListener('click', function () {
                 if (popupPrimary.classList.contains('master')) {
                     popupPrimary.classList.remove('master');
@@ -163,22 +201,27 @@ let controller = (function (budgetCtrl, UICtrl) {
     }
 
     ctrlAddCategory = () => {
-        let catType, nameInput;
+        let catType, nameInput, newItem;
 
-
+        // 1. Get the category type
         catType = document.getElementById('primary');
         if (catType.classList.contains('master')) {
             catType = 'master';
+            
         } else {
             catType = 'sub';
         }
-
+        newItem = budgetCtrl.addItem(catType);
+        
+        // 2.Get the input name
         nameInput = UICtrl.getCategoryInput();
-
-
-
         if (nameInput.name !== "") {
+
+            // 3. Add item to UI
             UICtrl.addCategoryItem(catType, nameInput.name);
+
+            // 4. Update event listeners
+            setupEventListeners();
         }
     }
 
