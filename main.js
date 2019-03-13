@@ -56,38 +56,15 @@ let UIController = (function () {
         },
 
         addCategoryItem: (type, name) => {
-            let table, element, newRow, cell1, cell2, cell3, cell4, cell5;
-        
-            // TODO 1. get category type, master or row
-            // console.log('im working here');
+            let table, element, newRow, cell1, cell2, cell3, cell4, cell5, newNode;
+
+            // Get table
             table = document.getElementById('budget-table');
+
+            // Get category type
             if (type === 'master') {
                 console.log('I am a master');
                 newRow = table.insertRow(0);
-
-                // newRow = `<tr class="budget-table-row master-category">
-                //             <td class="budget-table-checkbox">
-                //                 <div class="checkbox-wrapper">
-                //                     <input type="checkbox" id="category-checkbox">
-                //                 </div>
-                //             </td>
-                //             <td class="budget-table-name">
-                //                 Immediate Obligations
-                //                 <button class="add-category inside-add" id="row">
-                //                     <img src="/images/plus-sign-in-a-circle.svg" alt="add category">
-                //                 </button>
-                //             </td>
-                //             <td class="budget-table-budgeted">
-                //                 £0.00
-                //             </td>
-                //             <td class="budget-table-activity">
-                //                 £0.00
-                //             </td>
-                //             <td class="budget-table-available">
-                //                 £0.00
-                //             </td>
-                //         </tr>`;
-
                 newRow.classList.add('budget-table-row');
                 newRow.classList.add('master-category');
 
@@ -103,14 +80,27 @@ let UIController = (function () {
                 cell4.classList.add('budget-table-activity');
                 cell5.classList.add('budget-table-available');
 
+                cell2.innerHTML = `${name}`;
+                cell3.innerHTML = '£0.00';
+                cell4.innerHTML = '£0.00';
+                cell5.innerHTML = '£0.00';
+
+                checkboxHtml = `<div class="checkbox-wrapper">
+                                    <input type="checkbox" id="category-checkbox">
+                                </div>`;
+                table.rows[0].cells.item(0).insertAdjacentHTML('afterbegin', checkboxHtml);
+
+                plusHtml = `<button class="add-category inside-add" id="row">
+                                <img src="/images/plus-sign-in-a-circle.svg" alt="add category">
+                            </button>`;
+                table.rows[0].cells.item(1).insertAdjacentHTML('beforeend', plusHtml);
 
 
-            } else if ( type=== 'sub') {
+
+            } else if (type === 'sub') {
                 console.log('I am a sub')
             }
             // TODO 2. create HTML string with placeholder text
-
-            let tableRef = document.querySelector('.budget-table')
 
 
 
@@ -175,11 +165,11 @@ let controller = (function (budgetCtrl, UICtrl) {
     ctrlAddCategory = () => {
         let catType, nameInput;
 
-        
+
         catType = document.getElementById('primary');
         if (catType.classList.contains('master')) {
             catType = 'master';
-        }   else {
+        } else {
             catType = 'sub';
         }
 
