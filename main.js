@@ -84,6 +84,8 @@ let UIController = (function () {
             popup.style.top = `${y + 25}px`;
             popup.style.left = `${x - 115}px`;
 
+
+
             document.onclick = function (e) {
                 if (e.target.id == 'overlay') {
                     overlay.style.display = 'none';
@@ -93,6 +95,7 @@ let UIController = (function () {
                     overlay.style.display = 'none';
                 }
             };
+
 
         },
 
@@ -182,13 +185,7 @@ let UIController = (function () {
 
 
         },
-
-        // removeParent: function() {
-        //     getParent = document.getElementById('parent');
-        //     getParent.rem
-
-        // },
-
+        
         getDOMstrings: function () {
             return DOMstrings;
         }
@@ -203,10 +200,22 @@ let controller = (function (budgetCtrl, UICtrl) {
         let DOM = UICtrl.getDOMstrings();
 
         // Toggle overlay display
-        let masterPop, popupPrimary, subPop;
+        let masterPop, popupPrimary, subPop, overlay;
 
         popupPrimary = document.getElementById('primary');
         popupPrimary.addEventListener('click', ctrlAddCategory);
+
+        overlay = document.querySelector(DOM.overlay)
+
+        document.addEventListener('keypress', function (event) {
+
+            if (event.keycode === 13 && overlay.style.display == 'block' || event.which === 13 && overlay.style.display == 'block') {
+                ctrlAddCategory();
+                overlay.style.display = 'none';
+                // document.querySelector(DOM.popup).style.display = 'none';
+                setupEventListeners();
+            }
+        });
 
         // sub category add buttons
         subPop = document.querySelectorAll(DOM.addCategory);
