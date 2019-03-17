@@ -84,7 +84,7 @@ let UIController = (function () {
             popup.style.top = `${y + 25}px`;
             popup.style.left = `${x - 115}px`;
 
-
+            document.querySelector(DOMstrings.categoryInput).focus();
 
             document.onclick = function (e) {
                 if (e.target.id == 'overlay') {
@@ -100,8 +100,8 @@ let UIController = (function () {
         },
 
         addCategoryItem: (item, name) => {
-            let table, element, newRow, cell1, cell2, cell3,
-                cell4, cell5, getParent, subRow;
+            let table, newRow, cell1, cell2, cell3,
+                cell4, cell5, subRow;
 
             // Get table
             table = document.getElementById('budget-table');
@@ -132,12 +132,17 @@ let UIController = (function () {
                 cell4.innerHTML = '£0.00';
                 cell5.innerHTML = '£0.00';
 
-                checkboxHtml = `<div class="checkbox-wrapper">
+                let checkboxHtml = `<div class="checkbox-wrapper">
                                     <input type="checkbox" id="category-checkbox">
                                 </div>`;
                 table.rows[0].cells.item(0).insertAdjacentHTML('afterbegin', checkboxHtml);
 
-                plusHtml = `<button class="add-category inside-add" id="row">
+                let arrowDown = `<button class="arrow-toggle">
+                                <img src="/images/caret-down.svg" alt="sort arrow">
+                             </button>`;
+                table.rows[0].cells.item(1).insertAdjacentHTML('afterbegin', arrowDown);
+
+                let plusHtml = `<button class="add-category inside-add" id="row">
                                 <img src="/images/plus-sign-in-a-circle.svg" alt="add category">
                             </button>`;
                 table.rows[0].cells.item(1).insertAdjacentHTML('beforeend', plusHtml);
@@ -169,12 +174,12 @@ let UIController = (function () {
                 cell4.innerHTML = '£0.00';
                 cell5.innerHTML = '£0.00';
 
-                checkboxHtml = `<div class="checkbox-wrapper">
+                let checkboxHtml = `<div class="checkbox-wrapper">
                                     <input type="checkbox" id="category-checkbox">
                                 </div>`;
                 table.rows[subRow].cells.item(0).insertAdjacentHTML('afterbegin', checkboxHtml);
 
-                budgetInput = `<div class="input-wrapper">
+                let budgetInput = `<div class="input-wrapper">
                                     <input type="text" placeholder="£0.00">
                                  </div>`;
                 table.rows[subRow].cells.item(2).insertAdjacentHTML('afterbegin', budgetInput);
@@ -183,6 +188,15 @@ let UIController = (function () {
                 getParentRow.removeAttribute('id');
             }
 
+
+        },
+
+        clearFields: () => {
+            let field;
+
+            field = document.querySelector(DOMstrings.categoryInput);
+
+            field.value = null;
 
         },
         
@@ -200,20 +214,25 @@ let controller = (function (budgetCtrl, UICtrl) {
         let DOM = UICtrl.getDOMstrings();
 
         // Toggle overlay display
-        let masterPop, popupPrimary, subPop, overlay;
+        let masterPop, popupPrimary, subPop, overlay, masterToggle;
 
         popupPrimary = document.getElementById('primary');
         popupPrimary.addEventListener('click', ctrlAddCategory);
 
-        overlay = document.querySelector(DOM.overlay)
+        masterToggle = document.querySelectorAll('.arrow-toggle');
+        masterToggle.forEach(function (arrow) {
+            arrow.addEventListener('click', () => {
 
+            })
+        });
+
+        
+        // Add enter button
+        overlay = document.querySelector(DOM.overlay);
         document.addEventListener('keypress', function (event) {
-
             if (event.keycode === 13 && overlay.style.display == 'block' || event.which === 13 && overlay.style.display == 'block') {
-                ctrlAddCategory();
                 overlay.style.display = 'none';
-                // document.querySelector(DOM.popup).style.display = 'none';
-                setupEventListeners();
+                ctrlAddCategory();
             }
         });
 
@@ -273,7 +292,10 @@ let controller = (function (budgetCtrl, UICtrl) {
             // 3. Add item to UI
             UICtrl.addCategoryItem(newItem, nameInput);
 
-            // 4. Update event listeners
+            // 4. Clear Fields
+            UICtrl.clearFields();
+
+            // 5. Update event listeners
             setupEventListeners();
         }
     }

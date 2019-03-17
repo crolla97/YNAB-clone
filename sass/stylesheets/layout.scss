@@ -82,6 +82,11 @@
                 flex-direction: row;
                 align-items: center;
                 justify-content: flex-start;
+                    .arrow-toggle {
+                        img {
+                            height: 10px;
+                        }
+                }
             }
         }
 
@@ -90,6 +95,10 @@
             border-top: 1px solid #dee3e8;
             margin-top: -1px;
             height: 2.3em;
+
+            .budget-table-name {
+                padding-left: 35px;
+            }
 
             td {
                 font-weight: 400;

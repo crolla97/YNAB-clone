@@ -197,11 +197,19 @@ button:focus {
   justify-content: flex-start;
 }
 
+.budget-table-container .budget-table .master-category .budget-table-name .arrow-toggle img {
+  height: 10px;
+}
+
 .budget-table-container .budget-table .sub-category {
   background-color: #FFF;
   border-top: 1px solid #dee3e8;
   margin-top: -1px;
   height: 2.3em;
+}
+
+.budget-table-container .budget-table .sub-category .budget-table-name {
+  padding-left: 35px;
 }
 
 .budget-table-container .budget-table .sub-category td {
