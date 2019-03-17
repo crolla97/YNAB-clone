@@ -83,11 +83,17 @@
                 align-items: center;
                 justify-content: flex-start;
                     .arrow-toggle {
+                        padding: 0;
+                        margin-right: 17px;
                         img {
                             height: 10px;
                         }
                 }
             }
+        }
+
+        .toggleDisplay {
+            display: none;
         }
 
         .sub-category {

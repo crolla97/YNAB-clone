@@ -43,6 +43,20 @@ let budgetController = (function () {
             return newItem;
         },
 
+        getChildren: function (row) {
+            let child, children
+            child = row.target.parentElement.parentElement.parentElement.nextElementSibling;
+            // console.log(child);
+            // console.log(child.nextElementSibling);
+            children = [];
+            while (child.classList.contains('sub-category')) {
+                children.push(child);
+                child = child.nextElementSibling;
+                row = child;
+            }
+            return children;
+        },
+
         testing: () => {
             console.log(categoryData);
         }
@@ -196,10 +210,11 @@ let UIController = (function () {
 
             field = document.querySelector(DOMstrings.categoryInput);
 
+            // Clear category input field
             field.value = null;
 
         },
-        
+
         getDOMstrings: function () {
             return DOMstrings;
         }
@@ -221,25 +236,34 @@ let controller = (function (budgetCtrl, UICtrl) {
 
         masterToggle = document.querySelectorAll('.arrow-toggle');
         masterToggle.forEach(function (arrow) {
-            arrow.addEventListener('click', () => {
-
-            })
+            console.log(arrow);
+            arrow.addEventListener('click', function (e) {
+                console.log(e.target);
+                let children = budgetCtrl.getChildren(e);
+                Array.prototype.forEach.call(children, function (e) {
+                    e.classList.toggle('toggleDisplay');
+                });
+            });
         });
 
-        
         // Add enter button
         overlay = document.querySelector(DOM.overlay);
         document.addEventListener('keypress', function (event) {
             if (event.keycode === 13 && overlay.style.display == 'block' || event.which === 13 && overlay.style.display == 'block') {
-                overlay.style.display = 'none';
-                ctrlAddCategory();
+                if (UICtrl.getCategoryInput().name !== "") {
+                    overlay.style.display = 'none';
+                    // document.querySelector(DOM.categoryInput).style.border = '2px solid #88979d';
+                    ctrlAddCategory();
+                } else {
+                    // TODO toggle alert for input field
+                    // document.querySelector(DOM.categoryInput).style.border = '2px solid #ff0000';                    
+                }
             }
         });
 
         // sub category add buttons
         subPop = document.querySelectorAll(DOM.addCategory);
         subPop.forEach(function (button) {
-            // button.parentElement.parentElement.setAttribute('id', 'parent');
             button.addEventListener('click', function () {
                 this.parentElement.parentElement.setAttribute('id', 'parent');
                 if (popupPrimary.classList.contains('master')) {

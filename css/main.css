@@ -197,8 +197,17 @@ button:focus {
   justify-content: flex-start;
 }
 
+.budget-table-container .budget-table .master-category .budget-table-name .arrow-toggle {
+  padding: 0;
+  margin-right: 17px;
+}
+
 .budget-table-container .budget-table .master-category .budget-table-name .arrow-toggle img {
   height: 10px;
+}
+
+.budget-table-container .budget-table .toggleDisplay {
+  display: none;
 }
 
 .budget-table-container .budget-table .sub-category {
