@@ -171,12 +171,12 @@ let UIController = (function () {
                 table.rows[0].cells.item(0).insertAdjacentHTML('afterbegin', checkboxHtml);
 
                 let arrowDown = `<button class="arrow-toggle">
-                                <img src="/images/caret-down.svg" alt="sort arrow">
+                                <img src="images/caret-down.svg" alt="sort arrow">
                              </button>`;
                 table.rows[0].cells.item(1).insertAdjacentHTML('afterbegin', arrowDown);
 
                 let plusHtml = `<button class="add-category inside-add" id="row">
-                                <img src="/images/plus-sign-in-a-circle.svg" alt="add category">
+                                <img src="images/plus-sign-in-a-circle.svg" alt="add category">
                             </button>`;
                 table.rows[0].cells.item(1).insertAdjacentHTML('beforeend', plusHtml);
 
@@ -247,18 +247,19 @@ let controller = (function (budgetCtrl, UICtrl) {
         let DOM = UICtrl.getDOMstrings();
 
         // Toggle overlay display
-        let masterPop, popupPrimary, subPop, overlay, masterToggle, start, next;
+        let masterPop, popupPrimary, subPop, overlay;
 
         popupPrimary = document.getElementById('primary');
         popupPrimary.addEventListener('click', ctrlAddCategory);
 
         // Collapse and Expand rows
-        masterToggle = document.querySelectorAll('.arrow-toggle');
+        let masterToggle = document.querySelectorAll('.arrow-toggle');
         masterToggle.forEach(function (cur) {
             cur.addEventListener('click', function (e) {
-                start = e.currentTarget.parentElement.parentElement;
-                children = budgetCtrl.getChildren(start, '.master-category');
+                let start = e.currentTarget.parentElement.parentElement;
+                let children = budgetCtrl.getChildren(start, '.master-category');
                 console.log(children);
+
             })
         });
 
