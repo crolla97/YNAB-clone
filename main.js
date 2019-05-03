@@ -15,7 +15,8 @@ let budgetController = (function () {
         catType: {
             master: [],
             sub: []
-        }
+        },
+        catGroups: {}
     };
 
     return {
@@ -43,18 +44,36 @@ let budgetController = (function () {
             return newItem;
         },
 
-        getChildren: function (row) {
-            let child, children
-            child = row.target.parentElement.parentElement.parentElement.nextElementSibling;
-            // console.log(child);
-            // console.log(child.nextElementSibling);
-            children = [];
-            while (child.classList.contains('sub-category')) {
-                children.push(child);
-                child = child.nextElementSibling;
-                row = child;
+        getChildren: function (elem, selector, filter) {
+
+            // Setup siblings array
+            let siblings = [];
+
+            // Get the next sibling element
+            elem = elem.nextElementSibling;
+
+            // As long as a sibling exists
+            while (elem) {
+
+                // If we've reached our match, bail
+                if (elem.matches(selector)) break;
+
+                // If filtering by a selector, check if the sibling matches
+                if (filter && !elem.matches(filter)) {
+                    elem = elem.nextElementSibling;
+                    continue;
+                }
+
+                // Otherwise, push it to the siblings array
+                siblings.push(elem);
+
+                // Get the next sibling element
+                elem = elem.nextElementSibling;
+
             }
-            return children;
+
+            return siblings;
+
         },
 
         testing: () => {
@@ -115,7 +134,7 @@ let UIController = (function () {
 
         addCategoryItem: (item, name) => {
             let table, newRow, cell1, cell2, cell3,
-                cell4, cell5, subRow;
+                cell4, cell5, subRow, getParentRow;
 
             // Get table
             table = document.getElementById('budget-table');
@@ -127,7 +146,7 @@ let UIController = (function () {
                 newRow.classList.add('budget-table-row');
                 newRow.classList.add('master-category');
 
-                table.rows[0].setAttribute("id", item.id);
+                table.rows[0].setAttribute("id", `mast-${item.id}`);
 
                 cell1 = newRow.insertCell(0);
                 cell2 = newRow.insertCell(1);
@@ -164,13 +183,13 @@ let UIController = (function () {
             } else if (item.type === 'sub') {
                 console.log('I am a sub');
                 getParentRow = document.getElementById('parent');
-                subRow = getParentRow.rowIndex + 1;
+                subRow = getParentRow.parentElement.rowIndex + 1;
 
                 newRow = table.insertRow(subRow);
                 newRow.classList.add('budget-table-row');
                 newRow.classList.add('sub-category');
 
-                table.rows[subRow].setAttribute("id", item.id);
+                table.rows[subRow].setAttribute("id", `sub-${item.id}`);
 
                 cell1 = newRow.insertCell(0);
                 cell2 = newRow.insertCell(1);
@@ -189,15 +208,14 @@ let UIController = (function () {
                 cell5.innerHTML = '£0.00';
 
                 let checkboxHtml = `<div class="checkbox-wrapper">
-                                    <input type="checkbox" id="category-checkbox">
-                                </div>`;
+                <input type="checkbox" id="category-checkbox">
+                </div>`;
                 table.rows[subRow].cells.item(0).insertAdjacentHTML('afterbegin', checkboxHtml);
 
                 let budgetInput = `<div class="input-wrapper">
-                                    <input type="text" placeholder="£0.00">
-                                 </div>`;
+                <input type="text" placeholder="£0.00">
+                </div>`;
                 table.rows[subRow].cells.item(2).insertAdjacentHTML('afterbegin', budgetInput);
-
 
                 getParentRow.removeAttribute('id');
             }
@@ -229,21 +247,19 @@ let controller = (function (budgetCtrl, UICtrl) {
         let DOM = UICtrl.getDOMstrings();
 
         // Toggle overlay display
-        let masterPop, popupPrimary, subPop, overlay, masterToggle;
+        let masterPop, popupPrimary, subPop, overlay, masterToggle, start, next;
 
         popupPrimary = document.getElementById('primary');
         popupPrimary.addEventListener('click', ctrlAddCategory);
 
+        // Collapse and Expand rows
         masterToggle = document.querySelectorAll('.arrow-toggle');
-        masterToggle.forEach(function (arrow) {
-            console.log(arrow);
-            arrow.addEventListener('click', function (e) {
-                console.log(e.target);
-                let children = budgetCtrl.getChildren(e);
-                Array.prototype.forEach.call(children, function (e) {
-                    e.classList.toggle('toggleDisplay');
-                });
-            });
+        masterToggle.forEach(function (cur) {
+            cur.addEventListener('click', function (e) {
+                start = e.currentTarget.parentElement.parentElement;
+                children = budgetCtrl.getChildren(start, '.master-category');
+                console.log(children);
+            })
         });
 
         // Add enter button
@@ -252,7 +268,6 @@ let controller = (function (budgetCtrl, UICtrl) {
             if (event.keycode === 13 && overlay.style.display == 'block' || event.which === 13 && overlay.style.display == 'block') {
                 if (UICtrl.getCategoryInput().name !== "") {
                     overlay.style.display = 'none';
-                    // document.querySelector(DOM.categoryInput).style.border = '2px solid #88979d';
                     ctrlAddCategory();
                 } else {
                     // TODO toggle alert for input field
@@ -265,7 +280,11 @@ let controller = (function (budgetCtrl, UICtrl) {
         subPop = document.querySelectorAll(DOM.addCategory);
         subPop.forEach(function (button) {
             button.addEventListener('click', function () {
-                this.parentElement.parentElement.setAttribute('id', 'parent');
+                this.parentElement.setAttribute('id', 'parent');
+                // let parent = this.parentElement.parentElement;
+                // let att = createAttribute('id');
+                // att.value = 'parent';
+                // parent.setAttribute(att);
                 if (popupPrimary.classList.contains('master')) {
                     popupPrimary.classList.remove('master');
                     popupPrimary.classList.add('sub');

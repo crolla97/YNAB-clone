@@ -200,6 +200,7 @@ button:focus {
 .budget-table-container .budget-table .master-category .budget-table-name .arrow-toggle {
   padding: 0;
   margin-right: 17px;
+  font-size: 0;
 }
 
 .budget-table-container .budget-table .master-category .budget-table-name .arrow-toggle img {
