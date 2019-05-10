@@ -22,18 +22,29 @@ class UI {
     // Focus on form
     document.querySelector('.category-name').focus();
 
-    let getParentRow = document.getElementById('parent');
-
+    // Close Popup and Overlay
     document.onclick = function (e) {
+      // Remove parent id if category is not added
+      let getParentRow = document.getElementById('parent');
       if (e.target.id == 'overlay') {
         overlay.style.display = 'none';
-      getParentRow.removeAttribute('id');
+        if (getParentRow === null) {} else {
+          getParentRow.removeAttribute('id');
+        }
       } else if (e.target.id == 'cancel') {
         overlay.style.display = 'none';
-      getParentRow.removeAttribute('id');
+        if (getParentRow === null) {} else {
+          getParentRow.removeAttribute('id');
+        }
       } else if (e.target.id == 'primary') {
         overlay.style.display = 'none';
       }
+
+      //Instantiate UI
+      const ui = new UI;
+      // Clear Fields
+      ui.clearFields();
+
     };
   }
 
@@ -131,7 +142,10 @@ class UI {
   }
 
   clearFields() {
+    const field = document.querySelector('.category-name');
 
+    // Clear category input field
+    field.value = null;
   }
 }
 /////////////////////
@@ -140,7 +154,7 @@ class UI {
 
 
 // Master Category Popup Event
-document.getElementById('master').addEventListener('click', function () {
+document.getElementById('master').addEventListener('click', () => {
   //Toggle button class to master
   const popupAddButton = document.getElementById('primary');
   if (popupAddButton.classList.contains('sub')) {
@@ -162,12 +176,11 @@ const addCatBtn = document.getElementById('primary').addEventListener('click', a
 
 // Sub Category Popup Event
 let table = document.getElementById('tbody').addEventListener('click', (e) => {
-  const currentBtn = e.target.parentElement.parentElement.parentElement;
-  console.log(currentBtn);
-  if (currentBtn.classList.contains('master-category')) {
+  let currentBtn = e.target.parentElement;
+  if (currentBtn.classList.contains('add-category')) {
+    currentBtn = e.target.parentElement.parentElement.parentElement;
     currentBtn.setAttribute('id', 'parent');
-    console.log(currentBtn);
-  
+
     //Toggle button class to sub
     const popupAddButton = document.getElementById('primary');
     if (popupAddButton.classList.contains('master')) {
@@ -176,10 +189,10 @@ let table = document.getElementById('tbody').addEventListener('click', (e) => {
     } else {
       popupAddButton.classList.add('sub');
     }
-  
+
     //Instantiate UI
     const ui = new UI;
-  
+
     // Show popup
     ui.showCategoryPopup();
   }
@@ -200,10 +213,11 @@ function addCategory() {
 
   // Instatiate new budget item
   const rowItem = new budgetItem(categoryName, type);
-  console.log(rowItem);
   // Instatiate UI
   const ui = new UI();
-
+  // Add category to UI
   ui.createCategory(rowItem);
+  // Clear field
+  ui.clearFields();
 
 }
