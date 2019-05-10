@@ -138,6 +138,15 @@ button:focus {
   height: 100%;
 }
 
+.budget-table-container ul .budget-table-checkbox button {
+  padding: 0;
+  width: 0;
+}
+
+.budget-table-container ul .budget-table-checkbox button img {
+  height: 14px;
+}
+
 .budget-table-container .budget-table {
   width: 100%;
 }

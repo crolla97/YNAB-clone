@@ -79,7 +79,7 @@ class UI {
       cell5.innerHTML = '£0.00';
 
       let checkboxHtml = `<div class="checkbox-wrapper">
-                                  <input type="checkbox" id="category-checkbox">
+                                  <input type="checkbox" class="category-checkbox">
                               </div>`;
       table.rows[0].cells.item(0).insertAdjacentHTML('afterbegin', checkboxHtml);
 
@@ -96,9 +96,7 @@ class UI {
     } else if (item.categoryType === 'sub') {
       console.log('I am a sub');
       let getParentRow = document.getElementById('parent');
-      console.log(getParentRow);
       let subRow = getParentRow.rowIndex + 1;
-      console.log(subRow);
 
       let newRow = table.insertRow(subRow);
       newRow.classList.add('budget-table-row');
@@ -123,7 +121,7 @@ class UI {
       cell5.innerHTML = '£0.00';
 
       let checkboxHtml = `<div class="checkbox-wrapper">
-              <input type="checkbox" id="category-checkbox">
+              <input type="checkbox" class="category-checkbox">
               </div>`;
       table.rows[subRow].cells.item(0).insertAdjacentHTML('afterbegin', checkboxHtml);
 
@@ -138,7 +136,12 @@ class UI {
   }
 
   deleteCategoryItem() {
-
+    let checkbox = document.querySelectorAll('.category-checkbox');
+    checkbox.forEach(function (currentBox) {
+      if (currentBox.checked === true) {
+        currentBox.parentElement.parentElement.parentElement.remove();
+      }
+    });
   }
 
   clearFields() {
@@ -198,7 +201,17 @@ let table = document.getElementById('tbody').addEventListener('click', (e) => {
   }
 });
 
-// Add category
+const deleteBtn = document.querySelector('.delete-button').addEventListener('click', function () {
+  //Instantiate UI
+  const ui = new UI;
+  // Show popup
+  ui.deleteCategoryItem();
+})
+
+//////////////////
+// Add category //
+//////////////////
+
 function addCategory() {
   // Get category type
   let type = document.querySelector('.add-btn');
